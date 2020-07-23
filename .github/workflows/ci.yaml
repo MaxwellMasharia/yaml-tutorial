@@ -1,0 +1,19 @@
+name: Greet Everyone
+on: ["push"]
+
+# The list of jobs
+jobs:
+  build:
+    # The jobs name is greeting
+    name: "Greeting"
+    # The job runs on ubuntu-latest
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Hello world"
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: "Maxwell"
+        id: "hello"
+      # This step prints an output (time) from the previous step's action.
+      - name: Echo the greeting's time
+        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
